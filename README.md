@@ -1,0 +1,1 @@
+# checkdom-challenge-odoo-assignment
