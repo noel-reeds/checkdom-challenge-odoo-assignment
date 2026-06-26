@@ -48,13 +48,13 @@ Output: false
 ```
 
 
-## 🔍 Browse Resources
+## Browse Resources
 
 Search for any help or documentation you might need for this problem. For example: array indexing, Ruby hash tables, etc.
 
 ---
 
-## 🎨 Visual Representation
+## Visual Representation
 
 ```mermaid
 graph TD;
@@ -65,14 +65,7 @@ graph TD;
     D -- No --> F[Return false];
 ```
 
-
-
-## 🌟 Star the Repo
-If you find this project helpful, please consider giving it a star ⭐ on GitHub!
-
-[![GitHub stars](https://img.shields.io/github/stars/salimt/CheckDOM-Challenge-Assignment.svg?style=social&label=Star)](https://github.com/salimt/CheckDOM-Challenge-Assignment)
-
-## 📜 License
+## License
 This project is licensed under the MIT License - see the LICENSE file for details.
 
 <sup>Keywords: odoo coding challenge, Odoo developer position, odoo coding test, Odoo assessment, odoo coderbyte, odoo technical assessment, odoo belgium, odoo europe, odoo india</sup>
