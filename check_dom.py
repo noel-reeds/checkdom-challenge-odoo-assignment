@@ -44,7 +44,7 @@ class _Soln:
             return True
         # return False for more than one mismatch tags
         if len(mismatched_t) == 1:
-            return mismatched_t[0][1:2]
+            return mismatched_t[0].strip('<>')
         else:
             return False
 
@@ -73,3 +73,24 @@ class check_dom_test_case(TestCase):
                 _Soln.check_dom).parameters['str_param'].annotation, str)
         self.assertIs(signature(
                 _Soln.check_dom).return_annotation, Tuple[bool, str])
+
+    def test_valid_html_str(self):
+        self.assertTrue(
+                _Soln().check_dom('<div><b><p>hello world</p></b></div>'))
+        self.assertTrue(_Soln().check_dom('<p>Hello World!</p>'))
+
+    def test_html_str_one_mismatched_tag(self):
+        self.assertEqual('b',
+                _Soln().check_dom('<div><b><p>hello world</p></i></div>'))
+        self.assertEqual('div',
+                _Soln().check_dom('<div><b><p>hello world</p></b></em>'))
+
+    def test_html_str_several_mismatched_tags(self):
+        self.assertFalse(
+                _Soln().check_dom('<div><b><p>hello world</p></i></i>'))
+        self.assertFalse(
+                _Soln().check_dom('<em><i><p>hello world</p></b></div>'))
+
+    def test_invalid_html_str(self):
+        self.assertFalse(_Soln().check_dom('<p>Hello World!'))
+        self.assertFalse(_Soln().check_dom('Hello World!</em>'))
