@@ -1,4 +1,4 @@
-# CheckDOM - HTML Element - [Odoo assesment challenge](https://www.odoo.com/jobs/software-developer-1)
+# CheckDOM - [Odoo assesment challenge](https://www.odoo.com/jobs/software-developer-1)
 
 ## Description
 
