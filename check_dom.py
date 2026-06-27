@@ -1,11 +1,11 @@
+from typing import Tuple
+
 class _Soln:
-    def check_dom(self, str_param: str) -> bool or str:
+    def check_dom(self, str_param: str) -> Tuple[bool, str]:
         """
         Check if an HMTL tag is valid or not.
-
         Args:
             str_param(str): An input HTML string containing tags.
-        
         Return:
             bool or str: Return False if HTML tags are mismatched or invalid
                         Returns mismatched tag if there's only one.
@@ -47,3 +47,29 @@ class _Soln:
             return mismatched_t[0][1:2]
         else:
             return False
+
+import inspect
+from inspect import signature
+from unittest import TestCase
+class check_dom_test_case(TestCase):
+    
+    def test_check_dom_cls_fn(self):
+        self.assertTrue(('__class__', _Soln) in 
+                inspect.getmembers(_Soln()))
+        with self.assertRaises(AssertionError):
+            self.assertTrue(('check_dom', _Soln().check_dom) in
+                    inspect.getmembers(_Soln()))
+    
+    def test_check_dom_objects(self):
+        self.assertTrue(inspect.isclass(_Soln))
+        self.assertTrue(inspect.ismethod(_Soln().check_dom))
+
+    def test_check_dom_args(self):
+        self.assertTrue(inspect.isfunction(_Soln.check_dom))
+        self.assertIn('str_param', signature(_Soln.check_dom).parameters)
+
+    def test_check_dom_annotations(self):
+        self.assertIs(signature(
+                _Soln.check_dom).parameters['str_param'].annotation, str)
+        self.assertIs(signature(
+                _Soln.check_dom).return_annotation, Tuple[bool, str])
